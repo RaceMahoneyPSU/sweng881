@@ -43,7 +43,7 @@ jobs:
         with:
           name: Postman API Tests           
           path: results/*.xml               
-          reporter: junit                   
+          reporter: java-junit                   
           fail-on-error: false              
 
       - name: Always upload XML files as artifacts
