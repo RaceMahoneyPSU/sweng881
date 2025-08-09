@@ -1,75 +1,51 @@
-name: Automated API tests using Postman CLI
+name: API tests sequential by language with GitHub Test UI
 
 on: push
 
 jobs:
-  automated-api-tests-ar:
+  automated-api-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Test LibreTranslate endpoint
-        run: |
-          curl -X POST https://libretranslate.com/translate -d q="Hello" -d source=en -d target=es -d api_key=${{ secrets.LIBRE_TRANSLATE_API_KEY }}
-      - name: Install Postman CLI
-        run: |
-          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-      - name: Login to Postman CLI
-        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-      - name: Run AR API tests
-        run: |
-          postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/ar.csv
-          sleep 60 # Allows for LibreTranslate Limit per minute to reset
 
-  automated-api-tests-en:
-    runs-on: ubuntu-latest
-    needs: automated-api-tests-ar
-    steps:
-      - uses: actions/checkout@v4
-      - name: Test LibreTranslate endpoint
-        run: |
-          curl -X POST https://libretranslate.com/translate -d q="Hello" -d source=en -d target=es -d api_key=${{ secrets.LIBRE_TRANSLATE_API_KEY }}
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-      - name: Login to Postman CLI
-        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-      - name: Run EN API tests
-        run: |
-          postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/en.csv
-          sleep 60 # Allows for LibreTranslate Limit per minute to reset  
-    
-  automated-api-tests-az:
-    runs-on: ubuntu-latest
-    needs: automated-api-tests-en
-    steps:
-      - uses: actions/checkout@v4
-      - name: Test LibreTranslate endpoint
-        run: |
-          curl -X POST https://libretranslate.com/translate -d q="Hello" -d source=en -d target=es -d api_key=${{ secrets.LIBRE_TRANSLATE_API_KEY }}
-      - name: Install Postman CLI
-        run: |
-          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-      - name: Login to Postman CLI
-        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-      - name: Run AZ API tests
-        run: |
-          postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/az.csv  
-          sleep 60 # Allows for LibreTranslate Limit per minute to reset
 
-  automated-api-tests-sq:
-    runs-on: ubuntu-latest
-    needs: automated-api-tests-az
-    steps:
-      - uses: actions/checkout@v4
-      - name: Test LibreTranslate endpoint
-        run: |
-          curl -X POST https://libretranslate.com/translate -d q="Hello" -d source=en -d target=es -d api_key=${{ secrets.LIBRE_TRANSLATE_API_KEY }}
-      - name: Install Postman CLI
-        run: |
-          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-      - name: Run SQ API tests
+
+      - name: Run tests by language (JUnit output)
         run: |
-          postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/sq.csv
-          sleep 60 # Allows for LibreTranslate Limit per minute to reset        
+          mkdir results
+          files=(data/*.csv)
+          total=${#files[@]}
+          count=0
+
+          for file in "${files[@]}"; do
+            count=$((count+1))
+            lang=$(basename "$file" .csv)
+            echo "Running $lang..."
+            postman collection run "47459137-e4cf5999-402a-4b4e-b80b-cbaf4547191e" \
+              -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" \
+              --iteration-data "$file" \
+              --reporters cli,junit \
+              --reporter-junit-export "results/${lang}.xml"
+
+            if [ $count -lt $total ]; then
+              echo "Sleeping 60 seconds..."
+              sleep 60
+            fi
+          done
+
+      - name: Upload test results to GitHub Tests UI
+        uses: actions/upload-test-results@v1
+        with:
+          files: results/*.xml
+
+      - name: Always upload XML files as artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: postman-junit-results
+          path: results/*.xml
