@@ -6,7 +6,6 @@ jobs:
   automated-api-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - uses: actions/checkout@v4
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -18,7 +17,11 @@ jobs:
       - name: Run LibreTranslate in background
         run: |
           libretranslate &   # Start server in background
-          sleep 10           # Wait for server to start (adjust as needed)
+          sleep 30           # Wait for server to start (adjust as needed)
+      - name: Check LibreTranslate health
+        run: |
+          sleep 5  # Give a little extra time for startup
+          curl -k http://127.0.0.1:5000/
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
