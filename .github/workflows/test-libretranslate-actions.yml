@@ -14,11 +14,11 @@ jobs:
       - name: Test LibreTranslate endpoint
         run: |
           curl -X POST https://libretranslate.com/translate -d q="Hello" -d source=en -d target=es -d api_key=${{ secrets.LIBRE_TRANSLATE_API_KEY }}
-      # - name: Install Postman CLI
-      #   run: |
-      #     curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-      # - name: Login to Postman CLI
-      #   run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-      # - name: Run API tests
-      #   run: |
-      #     postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759"
+      - name: Install Postman CLI
+        run: |
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      - name: Login to Postman CLI
+        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+      - name: Run AR API tests
+        run: |
+          postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/ar.csv
