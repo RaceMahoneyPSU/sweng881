@@ -30,7 +30,7 @@ jobs:
               -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" \
               --iteration-data "$file" \
               --reporters cli,junit \
-              --reporter-junit-export "results/${lang}.xml"
+              --reporter-junit-export "results/${lang}.xml" || true # Keep running even if one fails
 
             if [ $count -lt $total ]; then
               echo "Sleeping 60 seconds..."
