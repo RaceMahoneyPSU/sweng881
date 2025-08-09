@@ -41,7 +41,10 @@ jobs:
       - name: Upload test results to GitHub Tests UI
         uses: dorny/test-reporter@v1
         with:
-          files: results/*.xml
+          name: Postman API Tests           
+          path: results/*.xml               
+          reporter: junit                   
+          fail-on-error: false              
 
       - name: Always upload XML files as artifacts
         if: always()
