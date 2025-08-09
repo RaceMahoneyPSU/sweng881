@@ -39,7 +39,7 @@ jobs:
           done
 
       - name: Upload test results to GitHub Tests UI
-        uses: actions/upload-test-results@v1
+        uses: dorny/test-reporter@v1
         with:
           files: results/*.xml
 
