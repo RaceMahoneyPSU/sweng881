@@ -28,6 +28,10 @@ jobs:
         run: docker ps -a
       - name: Print LibreTranslate Docker logs
         run: docker logs libretranslate
+      - name: Test LibreTranslate endpoint
+        run: |
+          sleep 5
+          curl -X POST http://localhost:5000/translate -d q="Hello" -d source=en -d target=es
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
