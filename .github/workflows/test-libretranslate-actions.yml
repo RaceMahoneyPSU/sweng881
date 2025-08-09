@@ -20,9 +20,7 @@ jobs:
           pip install libreTranslate
       - name: Run LibreTranslate in background
         run: |
-          export PATH="$HOME/.local/bin:$PATH"
-          which libretranslate
-          libretranslate > libretranslate.log 2>&1 &
+          /opt/hostedtoolcache/Python/3.10.18/x64/bin/libretranslate > libretranslate.log 2>&1 &
           sleep 45
           tail -n 50 libretranslate.log
       - name: Check LibreTranslate health
