@@ -18,9 +18,11 @@ jobs:
       - name: Run AR API tests
         run: |
           postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/ar.csv
+          sleep 60 # Allows for LibreTranslate Limit per minute to reset
 
   automated-api-tests-en:
     runs-on: ubuntu-latest
+    needs: automated-api-tests-ar
     steps:
       - uses: actions/checkout@v4
       - name: Test LibreTranslate endpoint
@@ -33,10 +35,12 @@ jobs:
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
       - name: Run EN API tests
         run: |
-          postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/en.csv  
+          postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/en.csv
+          sleep 60 # Allows for LibreTranslate Limit per minute to reset  
     
   automated-api-tests-az:
     runs-on: ubuntu-latest
+    needs: automated-api-tests-en
     steps:
       - uses: actions/checkout@v4
       - name: Test LibreTranslate endpoint
@@ -50,9 +54,11 @@ jobs:
       - name: Run AZ API tests
         run: |
           postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/az.csv  
+          sleep 60 # Allows for LibreTranslate Limit per minute to reset
 
   automated-api-tests-sq:
     runs-on: ubuntu-latest
+    needs: automated-api-tests-az
     steps:
       - uses: actions/checkout@v4
       - name: Test LibreTranslate endpoint
@@ -65,4 +71,5 @@ jobs:
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
       - name: Run SQ API tests
         run: |
-          postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/sq.csv           
+          postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/sq.csv
+          sleep 60 # Allows for LibreTranslate Limit per minute to reset        
