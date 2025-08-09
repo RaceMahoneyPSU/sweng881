@@ -11,32 +11,14 @@ jobs:
         uses: actions/setup-python@v5
         with:
             python-version: '3.10'
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libxml2-dev libxslt1-dev
-      - name: Clone LibreTranslate
-        run: |
-          git clone https://github.com/LibreTranslate/LibreTranslate.git
-      - name: Run LibreTranslate Docker container
-        run: |
-          cd LibreTranslate
-          docker run -d --name libretranslate -p 5000:5000 libretranslate/libretranslate
-          sleep 100
-          docker logs libretranslate
-      - name: Check Docker container status
-        run: docker ps -a
-      - name: Print LibreTranslate Docker logs
-        run: docker logs libretranslate
       - name: Test LibreTranslate endpoint
         run: |
-          sleep 5
-          curl -X POST http://localhost:5000/translate -d q="Hello" -d source=en -d target=es
-      - name: Install Postman CLI
-        run: |
-          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-      - name: Login to Postman CLI
-        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-      - name: Run API tests
-        run: |
-          postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759"
+          curl -X POST http://localhost:5000/translate -d q="Hello" -d source=en -d target=es -d api_key=${{ secrets.LIBRE_TRANSLATE_API_KEY }}
+      # - name: Install Postman CLI
+      #   run: |
+      #     curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      # - name: Login to Postman CLI
+      #   run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+      # - name: Run API tests
+      #   run: |
+      #     postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759"
