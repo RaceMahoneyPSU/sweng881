@@ -21,7 +21,7 @@ jobs:
       - name: Run LibreTranslate Docker container
         run: |
           cd LibreTranslate
-          ./run.sh &
+          docker run -d --name libretranslate -p 5000:5000 libretranslate/libretranslate
           sleep 45
           docker logs libretranslate
       - name: Check LibreTranslate health
