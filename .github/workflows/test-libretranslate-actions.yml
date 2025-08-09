@@ -15,14 +15,15 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libxml2-dev libxslt1-dev
-      - name: Install LibreTranslate
+      - name: Clone LibreTranslate
         run: |
-          pip install libreTranslate
-      - name: Run LibreTranslate in background
+          git clone https://github.com/LibreTranslate/LibreTranslate.git
+      - name: Run LibreTranslate Docker container
         run: |
-          /opt/hostedtoolcache/Python/3.10.18/x64/bin/libretranslate > libretranslate.log 2>&1 &
+          cd LibreTranslate
+          ./run.sh &
           sleep 45
-          tail -n 50 libretranslate.log
+          docker logs libretranslate
       - name: Check LibreTranslate health
         run: |
           sleep 5  # Give a little extra time for startup
