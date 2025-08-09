@@ -13,7 +13,7 @@ jobs:
             python-version: '3.10'
       - name: Test LibreTranslate endpoint
         run: |
-          curl -X POST http://localhost:5000/translate -d q="Hello" -d source=en -d target=es -d api_key=${{ secrets.LIBRE_TRANSLATE_API_KEY }}
+          curl -X POST https://libretranslate.com/translate -d q="Hello" -d source=en -d target=es -d api_key=${{ secrets.LIBRE_TRANSLATE_API_KEY }}
       # - name: Install Postman CLI
       #   run: |
       #     curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
