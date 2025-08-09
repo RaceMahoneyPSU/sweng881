@@ -3,14 +3,10 @@ name: Automated API tests using Postman CLI
 on: push
 
 jobs:
-  automated-api-tests:
+  automated-api-tests-ar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-            python-version: '3.10'
       - name: Test LibreTranslate endpoint
         run: |
           curl -X POST https://libretranslate.com/translate -d q="Hello" -d source=en -d target=es -d api_key=${{ secrets.LIBRE_TRANSLATE_API_KEY }}
@@ -22,3 +18,51 @@ jobs:
       - name: Run AR API tests
         run: |
           postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/ar.csv
+
+  automated-api-tests-en:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test LibreTranslate endpoint
+        run: |
+          curl -X POST https://libretranslate.com/translate -d q="Hello" -d source=en -d target=es -d api_key=${{ secrets.LIBRE_TRANSLATE_API_KEY }}
+      - name: Install Postman CLI
+        run: |
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      - name: Login to Postman CLI
+        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+      - name: Run EN API tests
+        run: |
+          postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/en.csv  
+    
+  automated-api-tests-az:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test LibreTranslate endpoint
+        run: |
+          curl -X POST https://libretranslate.com/translate -d q="Hello" -d source=en -d target=es -d api_key=${{ secrets.LIBRE_TRANSLATE_API_KEY }}
+      - name: Install Postman CLI
+        run: |
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      - name: Login to Postman CLI
+        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+      - name: Run AZ API tests
+        run: |
+          postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/az.csv  
+
+  automated-api-tests-sq:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test LibreTranslate endpoint
+        run: |
+          curl -X POST https://libretranslate.com/translate -d q="Hello" -d source=en -d target=es -d api_key=${{ secrets.LIBRE_TRANSLATE_API_KEY }}
+      - name: Install Postman CLI
+        run: |
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      - name: Login to Postman CLI
+        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+      - name: Run SQ API tests
+        run: |
+          postman collection run "47459137-48797e38-ee8a-484b-8286-158ea80b6fa5" -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" --iteration-data data/sq.csv           
