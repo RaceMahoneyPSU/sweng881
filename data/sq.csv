@@ -1,0 +1,48 @@
+q,source,target,expected_detected_language
+Mirëmëngjes.,auto,ar,sq
+Mirëmëngjes.,auto,az,sq
+Mirëmëngjes.,auto,bg,sq
+Mirëmëngjes.,auto,bn,sq
+"Përshëndetje, si jeni?",auto,ca,sq
+"Përshëndetje, si jeni?",auto,cs,sq
+Më pëlqejnë mollët.,auto,da,sq
+"Përshëndetje, si jeni?",auto,de,sq
+Mirëmëngjes.,auto,el,sq
+"Përshëndetje, si jeni?",auto,en,sq
+"Përshëndetje, si jeni?",auto,eo,sq
+Mirëmëngjes.,auto,es,sq
+Më pëlqejnë mollët.,auto,et,sq
+Mirëmëngjes.,auto,eu,sq
+Mirëmëngjes.,auto,fa,sq
+Mirëmëngjes.,auto,fi,sq
+Mirëmëngjes.,auto,fr,sq
+"Përshëndetje, si jeni?",auto,ga,sq
+Më pëlqejnë mollët.,auto,gl,sq
+Më pëlqejnë mollët.,auto,he,sq
+Më pëlqejnë mollët.,auto,hi,sq
+Mirëmëngjes.,auto,hu,sq
+Mirëmëngjes.,auto,id,sq
+Mirëmëngjes.,auto,it,sq
+Më pëlqejnë mollët.,auto,ja,sq
+Mirëmëngjes.,auto,ko,sq
+"Përshëndetje, si jeni?",auto,ky,sq
+Mirëmëngjes.,auto,lt,sq
+Mirëmëngjes.,auto,lv,sq
+Më pëlqejnë mollët.,auto,ms,sq
+Më pëlqejnë mollët.,auto,nb,sq
+"Përshëndetje, si jeni?",auto,nl,sq
+Mirëmëngjes.,auto,pt-BR,sq
+"Përshëndetje, si jeni?",auto,pl,sq
+"Përshëndetje, si jeni?",auto,pt,sq
+"Përshëndetje, si jeni?",auto,ro,sq
+Më pëlqejnë mollët.,auto,ru,sq
+Më pëlqejnë mollët.,auto,sk,sq
+Mirëmëngjes.,auto,sl,sq
+Mirëmëngjes.,auto,sv,sq
+Mirëmëngjes.,auto,th,sq
+"Përshëndetje, si jeni?",auto,tl,sq
+"Përshëndetje, si jeni?",auto,tr,sq
+Mirëmëngjes.,auto,uk,sq
+Mirëmëngjes.,auto,ur,sq
+Më pëlqejnë mollët.,auto,zh-Hans,sq
+"Përshëndetje, si jeni?",auto,zh-Hant,sq

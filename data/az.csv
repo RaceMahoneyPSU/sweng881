@@ -1,0 +1,48 @@
+q,source,target,expected_detected_language
+Mən almaları sevirəm.,auto,ar,az
+Sabahınız xeyir.,auto,bg,az
+Sabahınız xeyir.,auto,bn,az
+Sabahınız xeyir.,auto,ca,az
+Sabahınız xeyir.,auto,cs,az
+Sabahınız xeyir.,auto,da,az
+"Salam, necəsən?",auto,de,az
+Sabahınız xeyir.,auto,el,az
+Sabahınız xeyir.,auto,en,az
+Mən almaları sevirəm.,auto,eo,az
+"Salam, necəsən?",auto,es,az
+"Salam, necəsən?",auto,et,az
+Sabahınız xeyir.,auto,eu,az
+Sabahınız xeyir.,auto,fa,az
+Mən almaları sevirəm.,auto,fi,az
+"Salam, necəsən?",auto,fr,az
+Sabahınız xeyir.,auto,ga,az
+"Salam, necəsən?",auto,gl,az
+Mən almaları sevirəm.,auto,he,az
+"Salam, necəsən?",auto,hi,az
+Mən almaları sevirəm.,auto,hu,az
+Sabahınız xeyir.,auto,id,az
+Sabahınız xeyir.,auto,it,az
+"Salam, necəsən?",auto,ja,az
+"Salam, necəsən?",auto,ko,az
+Mən almaları sevirəm.,auto,ky,az
+Sabahınız xeyir.,auto,lt,az
+Sabahınız xeyir.,auto,lv,az
+Sabahınız xeyir.,auto,ms,az
+Sabahınız xeyir.,auto,nb,az
+"Salam, necəsən?",auto,nl,az
+Mən almaları sevirəm.,auto,pt-BR,az
+Sabahınız xeyir.,auto,pl,az
+"Salam, necəsən?",auto,pt,az
+Sabahınız xeyir.,auto,ro,az
+Mən almaları sevirəm.,auto,ru,az
+Sabahınız xeyir.,auto,sk,az
+"Salam, necəsən?",auto,sl,az
+Sabahınız xeyir.,auto,sq,az
+"Salam, necəsən?",auto,sv,az
+Mən almaları sevirəm.,auto,th,az
+Sabahınız xeyir.,auto,tl,az
+"Salam, necəsən?",auto,tr,az
+Mən almaları sevirəm.,auto,uk,az
+Mən almaları sevirəm.,auto,ur,az
+"Salam, necəsən?",auto,zh-Hans,az
+"Salam, necəsən?",auto,zh-Hant,az

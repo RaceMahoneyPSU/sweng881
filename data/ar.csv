@@ -1,0 +1,48 @@
+q,source,target,expected_detected_language
+صباح الخير.,auto,az,ar
+أنا أحب التفاح.,auto,bg,ar
+أنا أحب التفاح.,auto,bn,ar
+أنا أحب التفاح.,auto,ca,ar
+أنا أحب التفاح.,auto,cs,ar
+أنا أحب التفاح.,auto,da,ar
+مرحبا كيف حالك؟,auto,de,ar
+مرحبا كيف حالك؟,auto,el,ar
+مرحبا كيف حالك؟,auto,en,ar
+صباح الخير.,auto,eo,ar
+مرحبا كيف حالك؟,auto,es,ar
+صباح الخير.,auto,et,ar
+أنا أحب التفاح.,auto,eu,ar
+صباح الخير.,auto,fa,ar
+مرحبا كيف حالك؟,auto,fi,ar
+أنا أحب التفاح.,auto,fr,ar
+صباح الخير.,auto,ga,ar
+مرحبا كيف حالك؟,auto,gl,ar
+مرحبا كيف حالك؟,auto,he,ar
+صباح الخير.,auto,hi,ar
+أنا أحب التفاح.,auto,hu,ar
+أنا أحب التفاح.,auto,id,ar
+مرحبا كيف حالك؟,auto,it,ar
+أنا أحب التفاح.,auto,ja,ar
+مرحبا كيف حالك؟,auto,ko,ar
+أنا أحب التفاح.,auto,ky,ar
+صباح الخير.,auto,lt,ar
+أنا أحب التفاح.,auto,lv,ar
+أنا أحب التفاح.,auto,ms,ar
+صباح الخير.,auto,nb,ar
+أنا أحب التفاح.,auto,nl,ar
+مرحبا كيف حالك؟,auto,pt-BR,ar
+صباح الخير.,auto,pl,ar
+أنا أحب التفاح.,auto,pt,ar
+صباح الخير.,auto,ro,ar
+مرحبا كيف حالك؟,auto,ru,ar
+صباح الخير.,auto,sk,ar
+مرحبا كيف حالك؟,auto,sl,ar
+مرحبا كيف حالك؟,auto,sq,ar
+مرحبا كيف حالك؟,auto,sv,ar
+مرحبا كيف حالك؟,auto,th,ar
+أنا أحب التفاح.,auto,tl,ar
+أنا أحب التفاح.,auto,tr,ar
+مرحبا كيف حالك؟,auto,uk,ar
+صباح الخير.,auto,ur,ar
+أنا أحب التفاح.,auto,zh-Hans,ar
+مرحبا كيف حالك؟,auto,zh-Hant,ar

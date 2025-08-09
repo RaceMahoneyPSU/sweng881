@@ -1,0 +1,48 @@
+q,source,target,expected_detected_language
+I like apples.,auto,ar,en
+I like apples.,auto,az,en
+"Hello, how are you?",auto,bg,en
+Good morning.,auto,bn,en
+Good morning.,auto,ca,en
+I like apples.,auto,cs,en
+I like apples.,auto,da,en
+I like apples.,auto,de,en
+Good morning.,auto,el,en
+Good morning.,auto,eo,en
+Good morning.,auto,es,en
+"Hello, how are you?",auto,et,en
+I like apples.,auto,eu,en
+Good morning.,auto,fa,en
+"Hello, how are you?",auto,fi,en
+I like apples.,auto,fr,en
+"Hello, how are you?",auto,ga,en
+"Hello, how are you?",auto,gl,en
+Good morning.,auto,he,en
+I like apples.,auto,hi,en
+I like apples.,auto,hu,en
+I like apples.,auto,id,en
+"Hello, how are you?",auto,it,en
+"Hello, how are you?",auto,ja,en
+Good morning.,auto,ko,en
+"Hello, how are you?",auto,ky,en
+I like apples.,auto,lt,en
+I like apples.,auto,lv,en
+"Hello, how are you?",auto,ms,en
+Good morning.,auto,nb,en
+I like apples.,auto,nl,en
+"Hello, how are you?",auto,pt-BR,en
+Good morning.,auto,pl,en
+"Hello, how are you?",auto,pt,en
+I like apples.,auto,ro,en
+Good morning.,auto,ru,en
+Good morning.,auto,sk,en
+Good morning.,auto,sl,en
+I like apples.,auto,sq,en
+"Hello, how are you?",auto,sv,en
+"Hello, how are you?",auto,th,en
+"Hello, how are you?",auto,tl,en
+Good morning.,auto,tr,en
+"Hello, how are you?",auto,uk,en
+"Hello, how are you?",auto,ur,en
+"Hello, how are you?",auto,zh-Hans,en
+"Hello, how are you?",auto,zh-Hant,en
