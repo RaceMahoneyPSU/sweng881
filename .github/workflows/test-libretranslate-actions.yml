@@ -17,11 +17,11 @@ jobs:
       - name: Run LibreTranslate in background
         run: |
           libretranslate &   # Start server in background
-          sleep 30           # Wait for server to start (adjust as needed)
+          sleep 45           # Wait for server to start (adjust as needed)
       - name: Check LibreTranslate health
         run: |
           sleep 5  # Give a little extra time for startup
-          curl -k http://127.0.0.1:5000/
+          curl -k -X GET http://127.0.0.1:5000/languages
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
