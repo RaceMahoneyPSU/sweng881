@@ -15,8 +15,10 @@ jobs:
       - name: Install LibreTranslate
         run: |
           pip install libreTranslate
-      - name: Run LibreTranslate
-        run : libretranslate
+      - name: Run LibreTranslate in background
+        run: |
+          libretranslate &   # Start server in background
+          sleep 10           # Wait for server to start (adjust as needed)
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
