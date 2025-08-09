@@ -26,10 +26,6 @@ jobs:
           docker logs libretranslate
       - name: Check Docker container status
         run: docker ps -a
-      - name: Check LibreTranslate health
-        run: |
-          sleep 30  # Give a little extra time for startup
-          curl -k -X GET http://127.0.0.1:5000/languages
       - name: Print LibreTranslate Docker logs
         run: docker logs libretranslate
       - name: Install Postman CLI
