@@ -20,6 +20,8 @@ jobs:
           pip install libreTranslate
       - name: Run LibreTranslate in background
         run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          which libretranslate
           libretranslate > libretranslate.log 2>&1 &
           sleep 45
           tail -n 50 libretranslate.log
