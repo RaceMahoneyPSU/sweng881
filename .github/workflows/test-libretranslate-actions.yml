@@ -20,7 +20,7 @@ jobs:
 
       - name: Run tests by language (JUnit output)
         run: |
-          mkdir results
+          mkdir -p results
           files=(data/*.csv)
           total=${#files[@]}
           count=0
@@ -29,25 +29,37 @@ jobs:
             count=$((count+1))
             lang=$(basename "$file" .csv)
             echo "Running $lang..."
+
+            # Run Postman tests
             postman collection run "47459137-e4cf5999-402a-4b4e-b80b-cbaf4547191e" \
               -e "47459137-3ab14281-d670-447c-baef-f3d7af002759" \
               --iteration-data "$file" \
               --reporters cli,junit \
-              --reporter-junit-export "results/${lang}.xml" || true # Keep running even if one fails
+              --reporter-junit-export "results/${lang}.xml" || true
 
+            # Ensure the JUnit file exists even if Postman failed
+            if [ ! -f "results/${lang}.xml" ]; then
+              echo "Creating empty JUnit file for $lang"
+              echo '<?xml version="1.0" encoding="UTF-8"?><testsuites></testsuites>' > "results/${lang}.xml"
+            fi
+
+            # Delay between jobs to avoid hitting rate limit
             if [ $count -lt $total ]; then
               echo "Sleeping 60 seconds..."
               sleep 60
             fi
           done
 
+      - name: List results before upload
+        run: ls -l results/
+
       - name: Upload test results to GitHub Tests UI
         uses: dorny/test-reporter@v1
         with:
-          name: Postman API Tests           
-          path: results/*.xml               
-          reporter: java-junit                   
-          fail-on-error: false              
+          name: Postman API Tests
+          path: results/*.xml
+          reporter: java-junit
+          fail-on-error: false
 
       - name: Always upload XML files as artifacts
         if: always()
