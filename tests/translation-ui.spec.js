@@ -16,6 +16,6 @@ test('LibreTranslate UI translates "Hello world" from English to Spanish', async
   await page.click('button:has-text("Translate")');
 
   // Wait for translation output
-  const result = page.locator('textarea2[readonly]');
-  await expect(result).toHaveText(/Hola mundo/i, { timeout: 15000 });
+  const result = page.locator('#textarea2[readonly]');
+  await expect(result).toHaveValue (/Hola mundo/i, { timeout: 15000 });
 });
