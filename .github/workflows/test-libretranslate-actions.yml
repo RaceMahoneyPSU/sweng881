@@ -81,7 +81,7 @@ jobs:
         with:
           name: Playwright UI Tests
           path: results/*.xml
-          reporter: junit
+          reporter: java-junit
 
       - name: Upload screenshots and videos on failure
         if: always()

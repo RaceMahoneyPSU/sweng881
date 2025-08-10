@@ -2,22 +2,25 @@ const { test, expect } = require('@playwright/test');
 
 test.describe('LibreTranslate UI', () => {
   test('translates "Hello world" from English to Spanish', async ({ page }) => {
-    await page.goto('https://libretranslate.com/');
+    await page.goto('https://libretranslate.com');
+
+    // Wait for source language dropdown
+    await page.waitForSelector('#sourceLang', { timeout: 15000 });
 
     // Select source language (English)
-    await page.locator('#sourceLanguage').selectOption('en');
+    await page.locator('#sourceLang').selectOption('en');
 
     // Select target language (Spanish)
-    await page.locator('#targetLanguage').selectOption('es');
+    await page.locator('#targetLang').selectOption('es');
 
-    // Type text
-    await page.locator('#sourceText').fill('Hello world');
+    // Enter text
+    await page.fill('#sourceText', 'Hello world');
 
-    // Click translate button
-    await page.locator('button:has-text("Translate")').click();
+    // Click translate
+    await page.click('#translateButton');
 
-    // Wait for translation output to appear
-    const translated = page.locator('#targetText');
-    await expect(translated).toHaveValue(/Hola mundo/i);
+    // Wait for result
+    const resultLocator = page.locator('#translatedText');
+    await expect(resultLocator).toHaveText(/Hola mundo/i, { timeout: 15000 });
   });
 });
