@@ -1,0 +1,12 @@
+{
+  "name": "libretranslate-ui-tests",
+  "version": "1.0.0",
+  "description": "UI test suite for libretranslate.com using Playwright",
+  "scripts": {
+    "test": "playwright test",
+    "test:report": "playwright test --reporter=junit --output=results"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0"
+  }
+}
