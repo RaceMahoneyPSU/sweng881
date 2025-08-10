@@ -16,7 +16,9 @@ test('LibreTranslate UI translates "Hello world" from English to Spanish', async
   await page.locator('select[aria-labelledby="targetLangLabel"]').selectOption('es');
 
 // Enter text to translate
-  await page.fill('#textarea1', 'Hello world');
+  await page.fill('#textarea1', 'Hello world', { timeout: 10000 });
+
+  await page.waitForTimeout(500);  // half-second pause
 
   // Click Translate
   await page.click('button:has-text("Translate")');
