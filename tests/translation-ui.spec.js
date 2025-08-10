@@ -15,17 +15,13 @@ test('LibreTranslate UI translates "Hello world" from English to Spanish', async
   // Click Translate
   await page.click('button:has-text("Translate")');
 
-  const result = page.locator('#textarea2[readonly]');
-
-// Wait until the textarea's value matches "Hola mundo" (with timeout)
+  // Wait for the textarea value to contain "Hola mundo"
   await page.waitForFunction(() => {
-    const el = document.querySelector('#textarea2[readonly]');
-    if (!el) return false;
-    const val = el.value.trim();
-    console.log('Current translation:', val);
+    const val = document.querySelector('#textarea2')?.value || '';
     return /Hola mundo/i.test(val);
   }, null, { timeout: 15000 });
 
-  // Finally assert
-  await expect(result).toHaveValue(/Hola mundo/i);
+  // Now assert the value contains the expected text
+  const translatedText = await page.locator('#textarea2').inputValue();
+  expect(translatedText).toMatch(/Hola mundo/i);
 });
