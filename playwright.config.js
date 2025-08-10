@@ -8,7 +8,7 @@ module.exports = {
     headless: false,
     baseURL: 'https://libretranslate.com',
     screenshot: 'only-on-failure',   // <-- Add this
-    video: 'retain-on-failure'       // Optional: keep a video if a test fails
+    video: 'retain-on-failure',       // Optional: keep a video if a test fails
     slowMo: 100
   },
 };
