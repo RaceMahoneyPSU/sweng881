@@ -7,6 +7,9 @@ function isEmoji(str) {
 }
 
 test('LibreTranslate UI translates "Hello world" from English to Spanish', async ({ page }) => {
+
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36');
   await page.goto('https://libretranslate.com');
 
   // Select source language (English)
@@ -15,14 +18,9 @@ test('LibreTranslate UI translates "Hello world" from English to Spanish', async
   // Select target language (Spanish)
   await page.locator('select[aria-labelledby="targetLangLabel"]').selectOption('es');
 
-// Enter text to translate
-  await page.fill('#textarea1', 'Hello world', { timeout: 10000 });
-
-  await page.waitForTimeout(500);  // half-second pause
-
-  // Click Translate
+  await page.type('#textarea1', 'Hello world', { delay: 100 });
+  await page.waitForTimeout(500);
   await page.click('button:has-text("Translate")');
-
   // Poll until we get a non-emoji value matching "Hola mundo"
   await page.waitForFunction(() => {
     const val = document.querySelector('#textarea2')?.value || '';
